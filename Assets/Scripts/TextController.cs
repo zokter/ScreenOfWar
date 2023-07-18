@@ -8,13 +8,18 @@ public class TextController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
-    private void Awake()
-    {
-        //textMeshProUGUI.text = "Some shit";
-    }
-
     public void SetText(string text)
     {
         textMeshProUGUI.text = text;
+    }
+
+    public void DisableText()
+    {
+        textMeshProUGUI.enabled = false;
+    }
+
+    public void EnableText()
+    {
+        textMeshProUGUI.enabled = true;
     }
 }

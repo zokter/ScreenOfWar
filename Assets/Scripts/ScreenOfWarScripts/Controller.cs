@@ -12,8 +12,6 @@ public class Controller : MonoBehaviour
 
     WinController WinController;
 
-    private int moves = 0;
-
     private void Awake()
     {
         RC = Red.GetComponent<RedController>();

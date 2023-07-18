@@ -17,6 +17,8 @@ public class WinController : MonoBehaviour
     [SerializeField] private Image RedCountBackground;
     [SerializeField] private Image BlueCountBackground;
 
+    [SerializeField] private MonoBehaviour[] controllScripts;
+
     private void Awake()
     {
         textController = canvas.GetComponent<TextController>();
@@ -43,7 +45,10 @@ public class WinController : MonoBehaviour
         RedWinsCount.text = PlayerScore.RedWinsCount.ToString();
         BlueWinsCount.text = PlayerScore.BlueWinsCount.ToString();
 
-        GetComponent<Controller>().enabled = false;
+        for(int i = 0; i < controllScripts.Length; i++)
+        {
+            controllScripts[i].enabled = false;
+        }
         restartButton.enabled = true;
         RedWinsCount.enabled = true;
         BlueWinsCount.enabled = true;

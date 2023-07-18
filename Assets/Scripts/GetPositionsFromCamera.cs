@@ -9,7 +9,6 @@ public class GetPositionsFromCamera : MonoBehaviour
     private Vector3 leftUpCorner;
     private Vector3 rightBottomCorner;
 
-
     private void Awake()
     {
 
