@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeedCup = 8;
+    private float moveSpeedCup = 7;
 
     private WinController winController;
 
     private ScoreTextController scoreTextController;
 
-    private float startMoveSpeed = 1.0f;
+    private float startMoveSpeed = 3.0f;
 
     private float moveSpeed;
 
@@ -65,7 +65,7 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float cathetus_a = transform.position.y - collision.transform.position.y;
-        float cathetus_b = transform.position.x - collision.transform.position.x;
+        float cathetus_b = (transform.position.x - collision.transform.position.x) / 2.5f;
 
         direction = new Vector2(cathetus_b, cathetus_a).normalized;
         if(moveSpeed < moveSpeedCup)
