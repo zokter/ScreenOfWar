@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PositionCheck
 {
-    public static bool IsOnBounds(Transform tf, float moveDirection)
+    public static bool IsOnHorizontalBounds(Transform tf, float moveDirection)
     {
         if (tf.position.x + tf.localScale.x / 2 >= Coordinates.right && moveDirection > 0)
         {

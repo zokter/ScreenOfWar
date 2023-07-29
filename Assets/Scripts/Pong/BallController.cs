@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    private Transform _transform;
+
     private float moveSpeedCup = 7;
 
     private WinController winController;
@@ -22,6 +24,7 @@ public class BallController : MonoBehaviour
 
     private void Awake()
     {
+        _transform = transform;
         moveSpeed = startMoveSpeed;
 
         scoreTextController = GetComponentInParent<ScoreTextController>();
@@ -42,19 +45,19 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
-        if (PositionCheck.IsOnBounds(transform, direction.x))
+        _transform.Translate(direction * moveSpeed * Time.deltaTime);
+        if (PositionCheck.IsOnHorizontalBounds(_transform, direction.x))
         {
             direction = new Vector2(-direction.x, direction.y);
         }
 
-        if(transform.position.y > Coordinates.top)
+        if(_transform.position.y > Coordinates.top)
         {
             PongScore.BlueGoalsCount++;
             scoreTextController.BlueScore.text = PongScore.BlueGoalsCount.ToString();
             ResetAfterGoal(1);
         }
-        else if(transform.position.y < Coordinates.bottom)
+        else if(_transform.position.y < Coordinates.bottom)
         {
             PongScore.RedGoalsCount++;
             scoreTextController.RedScore.text = PongScore.RedGoalsCount.ToString();
@@ -64,8 +67,8 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float cathetus_a = transform.position.y - collision.transform.position.y;
-        float cathetus_b = (transform.position.x - collision.transform.position.x) / 2.5f;
+        float cathetus_a = _transform.position.y - collision.transform.position.y;
+        float cathetus_b = (_transform.position.x - collision.transform.position.x) / 2.5f;
 
         direction = new Vector2(cathetus_b, cathetus_a).normalized;
         if(moveSpeed < moveSpeedCup)
@@ -76,7 +79,7 @@ public class BallController : MonoBehaviour
 
     private void ResetAfterGoal(int scoringTeam)
     {
-        transform.position = new Vector2(0, 0);
+        _transform.position = new Vector2(0, 0);
         direction = new Vector2(0.0f, 1.0f) * scoringTeam;
         moveSpeed = startMoveSpeed;
 

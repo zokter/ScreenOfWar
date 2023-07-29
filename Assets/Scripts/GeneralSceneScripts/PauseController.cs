@@ -1,28 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class StartScript : MonoBehaviour
+public class PauseController : MonoBehaviour
 {
+    
     [SerializeField] MonoBehaviour[] controlScripts;
     [SerializeField] GameObject startButton;
+    [SerializeField] GameObject pauseButton;
 
-    private void Awake()
+    public void PauseGame()
     {
         startButton.SetActive(true);
+        pauseButton.SetActive(false);
         for (int i = 0; i < controlScripts.Length; i++)
         {
             controlScripts[i].enabled = false;
-        }
-    }
-
-    public void StartGame()
-    {
-        startButton.SetActive(false);
-        for (int i = 0; i < controlScripts.Length; i++)
-        {
-            controlScripts[i].enabled = true;
         }
     }
 }

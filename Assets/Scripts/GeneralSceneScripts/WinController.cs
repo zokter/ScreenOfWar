@@ -34,16 +34,16 @@ public class WinController : MonoBehaviour
         if(side == 0)
         {
             textController.SetText("Red won!");
-            PlayerScore.RedWinsCount += 1;
+            TotalScore.RedWinsCount += 1;
         }
         else
         {
             textController.SetText("Blue won!");
-            PlayerScore.BlueWinsCount += 1;
+            TotalScore.BlueWinsCount += 1;
         }
 
-        RedWinsCount.text = PlayerScore.RedWinsCount.ToString();
-        BlueWinsCount.text = PlayerScore.BlueWinsCount.ToString();
+        RedWinsCount.text = TotalScore.RedWinsCount.ToString();
+        BlueWinsCount.text = TotalScore.BlueWinsCount.ToString();
 
         for(int i = 0; i < controllScripts.Length; i++)
         {
@@ -60,5 +60,4 @@ public class WinController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
 }

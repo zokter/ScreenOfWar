@@ -4,7 +4,6 @@ using UnityEngine;
 
 public static class Coordinates
 {
-
     public static float left;
     public static float right;
     public static float bottom;

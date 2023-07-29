@@ -17,7 +17,7 @@ public class GameInfoFormer : MonoBehaviour
         GamesCount = SceneManager.sceneCountInBuildSettings;
         for(int i = 1; i < GamesCount; i++)
         {
-            GameInfo GameToAdd = new GameInfo(GameIcons[0], i, GameNames.getName(i - 1), GameDescriptions.getDescriptions(i - 1));
+            GameInfo GameToAdd = new GameInfo(GameIcons[i - 1], i, GameNames.getName(i - 1), GameDescriptions.getDescription(i - 1));
             GameObject container = Instantiate(menuContainer, Menu.transform);
             container.GetComponent<ContainerManager>().SetGameInfo(GameToAdd);
         }

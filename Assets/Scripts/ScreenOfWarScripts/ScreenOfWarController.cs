@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class ScreenOfWarController : MonoBehaviour
 {
     [SerializeField] private GameObject Red;
     [SerializeField] private GameObject Blue;

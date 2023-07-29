@@ -27,12 +27,14 @@ public class RacketsController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(rayCast, out hit))
                 {
+                    Vector3 touchPos = cam.ScreenToWorldPoint(touch.position);
                     if (hit.transform.name == "RedTeam")
                     {
-                        if (!PositionCheck.IsOnBounds(RedRacket.transform, touch.deltaPosition.x))
+                        if (!PositionCheck.IsOnHorizontalBounds(RedRacket.transform, touch.deltaPosition.x))
                         {
-                            RedRacket.transform.position = new Vector2(RedRacket.transform.position.x + touch.deltaPosition.x * speedModifier,
-                                RedRacket.transform.position.y);
+                            /*RedRacket.transform.position = new Vector2(RedRacket.transform.position.x + touch.deltaPosition.x * speedModifier,
+                                RedRacket.transform.position.y);*/
+                            RedRacket.transform.position = new Vector2(touchPos.x, RedRacket.transform.position.y);
                         }
                         else
                         {
@@ -51,10 +53,11 @@ public class RacketsController : MonoBehaviour
                     }
                     if (hit.transform.name == "BlueTeam")
                     {
-                        if (!PositionCheck.IsOnBounds(BlueRacket.transform, touch.deltaPosition.x))
-                        {
+                        if (!PositionCheck.IsOnHorizontalBounds(BlueRacket.transform, touch.deltaPosition.x))
+                        {/*
                             BlueRacket.transform.position = new Vector2(BlueRacket.transform.position.x + touch.deltaPosition.x * speedModifier,
-                                                                        BlueRacket.transform.position.y);
+                                                                        BlueRacket.transform.position.y);*/
+                            BlueRacket.transform.position = new Vector2(touchPos.x, BlueRacket.transform.position.y);
                         }
                         else
                         {
